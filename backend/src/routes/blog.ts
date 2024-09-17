@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { authChecker } from "../middlewares/authChecker";
-import { PrismaClient } from "@prisma/client/extension";
+import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 
 export const blogRouter = new Hono<{
@@ -9,13 +9,14 @@ export const blogRouter = new Hono<{
     JWT_SECRET: string;
   };
   Variables: {
-    userId: any;
+    userId: string;
   };
 }>();
 
 blogRouter.use("/*", authChecker);
 
 blogRouter.post("/", async (c) => {
+  const userId = c.get("userId");
   const body = await c.req.json();
   const prisma = new PrismaClient({
     datasourceUrl: c.env?.DATABASE_URL,
@@ -25,8 +26,7 @@ blogRouter.post("/", async (c) => {
     data: {
       title: body.title,
       content: body.content,
-      authorId: 1,
-      published: body.published,
+      authorId: userId,
       thumbnail: body.thumbnail,
     },
   });
@@ -38,6 +38,7 @@ blogRouter.post("/", async (c) => {
     200
   );
 });
+
 blogRouter.put("/", async (c) => {
   const body = await c.req.json();
   const prisma = new PrismaClient({
@@ -62,6 +63,33 @@ blogRouter.put("/", async (c) => {
     200
   );
 });
+
+//pagination
+blogRouter.get("/bulk", async (c) => {
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env?.DATABASE_URL,
+  }).$extends(withAccelerate());
+
+  try {
+    const blogs = await prisma.post.findMany();
+
+    return c.json(
+      {
+        blogs,
+      },
+      200
+    );
+  } catch (error) {
+    return c.json(
+      {
+        error: "Error fetching blog posts!",
+      },
+      411
+    );
+  }
+});
+
+//if not bulk then definately an id
 
 blogRouter.get("/:id", async (c) => {
   const id = c.req.param("id");
@@ -92,27 +120,3 @@ blogRouter.get("/:id", async (c) => {
   }
 });
 
-//pagination
-blogRouter.get("/bulk", async (c) => {
-  const prisma = new PrismaClient({
-    datasourceUrl: c.env?.DATABASE_URL,
-  }).$extends(withAccelerate());
-
-  try {
-    const allBlogs = await prisma.post.findMany();
-
-    return c.json(
-      {
-        allBlogs,
-      },
-      200
-    );
-  } catch (error) {
-    return c.json(
-      {
-        error: "Error fetching blog posts!",
-      },
-      411
-    );
-  }
-});

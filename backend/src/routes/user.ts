@@ -13,7 +13,7 @@ export const userRouter = new Hono<{
 userRouter.post("/signup", async (c) => {
   //c-> req,res,json everything in single object
   const prisma = new PrismaClient({
-    datasourceUrl: c.env?.DATABASE_URL,
+    datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
 
   const body = await c.req.json();
@@ -21,6 +21,7 @@ userRouter.post("/signup", async (c) => {
   try {
     const user = await prisma.user.create({
       data: {
+        name: body.name,
         email: body.email,
         password: body.password,
       },
