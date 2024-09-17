@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { authChecker } from "../middlewares/authChecker";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
+import { createPostSchema, putPostSchema } from "@rishav_dev/gossips-types";
 
 export const blogRouter = new Hono<{
   Bindings: {
@@ -16,11 +17,23 @@ export const blogRouter = new Hono<{
 blogRouter.use("/*", authChecker);
 
 blogRouter.post("/", async (c) => {
-  const userId = c.get("userId");
-  const body = await c.req.json();
   const prisma = new PrismaClient({
     datasourceUrl: c.env?.DATABASE_URL,
   }).$extends(withAccelerate());
+
+  const userId = c.get("userId");
+  const body = await c.req.json();
+
+  const { success, error } = createPostSchema.safeParse(body);
+  if (!success) {
+    return c.json(
+      {
+        error: "Invalid Inputs!",
+        details: error,
+      },
+      400
+    );
+  }
 
   const blog = await prisma.post.create({
     data: {
@@ -40,10 +53,21 @@ blogRouter.post("/", async (c) => {
 });
 
 blogRouter.put("/", async (c) => {
-  const body = await c.req.json();
   const prisma = new PrismaClient({
     datasourceUrl: c.env?.DATABASE_URL,
   }).$extends(withAccelerate());
+  
+  const body = await c.req.json();
+  const { success, error } = putPostSchema.safeParse(body);
+  if (!success) {
+    return c.json(
+      {
+        error: "Invalid Inputs!",
+        details: error,
+      },
+      400
+    );
+  }
 
   const blog = await prisma.post.update({
     where: {
