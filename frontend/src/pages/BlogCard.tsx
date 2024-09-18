@@ -17,8 +17,7 @@ const BlogCard = ({
   id
 }: BlogCardProps) => {
   return (
-    <Link to={`/blog/${id}`}>
-    <div className="border-b-2 border-gray-200 p-4 w-screen max-w-screen-md cursor-pointer">
+    <Link to={`/blog/${id}`} className="border-b-2 border-gray-200 p-4 w-screen max-w-screen-md cursor-pointer">
       <div className="flex">
         <div className="flex justify-center flex-col">
           <AvatarPic name={authorName} />
@@ -34,7 +33,6 @@ const BlogCard = ({
         {content.length > 100 ? content?.slice(0, 100) + "..." : content}
       </div>
       <div className="text-slate-500 text-sm pt-2">{`${Math.ceil(content.length / 100)} minute(s) red`}</div>
-    </div>
     </Link>
   );
 };

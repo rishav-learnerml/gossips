@@ -77,7 +77,7 @@ blogRouter.put("/", async (c) => {
       title: body.title,
       content: body.content,
       thumbnail: body.thumbnail,
-    },
+    }
   });
 
   return c.json(
@@ -137,6 +137,16 @@ blogRouter.get("/:id", async (c) => {
       where: {
         id,
       },
+      select:{
+        id:true,
+        title:true,
+        content:true,
+        author:{
+          select:{
+            name:true
+          }
+        }
+      }
     });
 
     return c.json(

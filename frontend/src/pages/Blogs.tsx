@@ -10,7 +10,7 @@ const Blogs = () => {
   return (
     <div>
       <Appbar />
-      <div className="flex justify-center">
+      <div className="flex flex-col items-center justify-center">
         {blogs?.map((blog) => (
           <BlogCard
             title={blog.title}

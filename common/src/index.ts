@@ -15,7 +15,6 @@ export const signinSchema = z.object({
 export const createPostSchema = z.object({
   title: z.string().min(10),
   content: z.string().min(20),
-  authorId: z.string(),
   thumbnail: z.string(),
 });
 

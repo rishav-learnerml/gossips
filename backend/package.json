@@ -7,7 +7,7 @@
   "dependencies": {
     "@prisma/client": "^5.19.1",
     "@prisma/extension-accelerate": "^1.1.0",
-    "@rishav_dev/gossips-types": "^1.0.0",
+    "@rishav_dev/gossips-types": "^1.0.1",
     "hono": "^4.6.1",
     "prisma": "^5.19.1"
   },

@@ -9,6 +9,7 @@ const SignUp = lazy(() => import("../pages/SignUp"));
 const SignIn = lazy(() => import("../pages/SignIn"));
 const Blog = lazy(() => import("../pages/Blog"));
 const Blogs = lazy(() => import("../pages/Blogs"));
+const Publish = lazy(() => import("../pages/Publish"));
 
 const Approuter = createBrowserRouter([
   {
@@ -45,6 +46,14 @@ const Approuter = createBrowserRouter([
         element: (
           <Suspense fallback={<Shimmer />}>
             <Blog />
+          </Suspense>
+        ),
+      },
+      {
+        path: "publish",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Publish />
           </Suspense>
         ),
       },

@@ -2,11 +2,26 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const Shimmer = () => {
   return (
-    <div className="flex flex-col space-y-3">
-      <Skeleton className="h-6/12 w-screen rounded-xl" />
-      <div className="space-y-2">
-        <Skeleton className="h-4 w-screen" />
-        <Skeleton className="h-4 w-screen" />
+    <div className="flex flex-col justify-center h-screen">
+      <div className="flex flex-col gap-y-2 my-5 items-center py-2">
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
+      </div>
+      <div className="flex flex-col gap-y-2 my-5 items-center py-2">
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
+      </div>
+      <div className="flex flex-col gap-y-2 my-5 items-center py-2">
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
+      </div>
+      <div className="flex flex-col gap-y-2 my-5 items-center py-2">
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
+        <Skeleton className="h-1 w-6/12 mx-10 py-3" />
       </div>
     </div>
   );
