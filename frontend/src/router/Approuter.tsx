@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import Layout from "../common/Layout";
 import Shimmer from "../utils/Shimmer";
 import ErrorPage from "../pages/ErrorPage";
@@ -17,6 +17,10 @@ const Approuter = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <Navigate to="/signup" replace />,
+      },
       {
         path: "signup",
         element: (
