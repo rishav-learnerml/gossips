@@ -101,6 +101,7 @@ blogRouter.get("/bulk", async (c) => {
         title: true,
         id: true,
         thumbnail: true,
+        createdAt: true,
         author: {
           select: {
             name: true,
@@ -116,6 +117,8 @@ blogRouter.get("/bulk", async (c) => {
       200
     );
   } catch (error) {
+    console.error("Error fetching blog post!",error)
+
     return c.json(
       {
         error: "Error fetching blog posts!",
@@ -143,6 +146,7 @@ blogRouter.get("/:id", async (c) => {
         title: true,
         content: true,
         thumbnail: true,
+        createdAt: true,
         author: {
           select: {
             name: true,
@@ -158,6 +162,7 @@ blogRouter.get("/:id", async (c) => {
       200
     );
   } catch (error) {
+    console.error("Error fetching blog post!",error)
     return c.json(
       {
         error: "Error fetching blog post!",

@@ -8,6 +8,7 @@ interface BlogCardProps {
   publishedDate: string;
   id: string;
   thumbnail: string;
+  
 }
 
 const BlogCard = ({
@@ -17,6 +18,7 @@ const BlogCard = ({
   publishedDate,
   thumbnail,
   id,
+
 }: BlogCardProps) => {
   return (
     <Link
@@ -43,7 +45,7 @@ const BlogCard = ({
             content.length / 100
           )} minute(s) red`}</div>
         </div>
-        <img src={thumbnail} alt="thumbnail" className="w-30 h-20 rounded-lg"/>
+        <img src={thumbnail} alt="thumbnail" className="w-30 h-20 rounded-lg" />
       </div>
     </Link>
   );

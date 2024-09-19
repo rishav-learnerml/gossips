@@ -7,6 +7,7 @@ export interface BlogType {
   title: string;
   id: string;
   thumbnail: string;
+  createdAt:string;
   author: {
     name: string;
   };

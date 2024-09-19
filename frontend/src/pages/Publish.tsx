@@ -73,7 +73,7 @@ const Publish = () => {
         description: "View Gossip to check!",
         action: (
           <ToastAction altText="View Gossips">
-            <Link to={"/blogs/" + res.data.id}>View Gossip</Link>
+            <Link to={"/blog/" + res.data.id}>View Gossip</Link>
           </ToastAction>
         ),
       });
@@ -111,7 +111,7 @@ const Publish = () => {
           </div>
         </div>
         <div className="md:w-8/12 ">
-          <Button type="submit">Publish</Button>
+          <Button type="submit" disabled={thumbnail.trim()===''}>Publish</Button>
         </div>
       </form>
     </div>

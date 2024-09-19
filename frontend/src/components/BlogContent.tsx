@@ -10,7 +10,19 @@ const BlogContent = ({ blog }: { blog: BlogType }) => {
         <div className="grid grid-cols-12 px-10 w-full pt-12 max-w-screen-xl">
           <div className="col-span-8">
             <div className="text-5xl font-extrabold">{blog.title}</div>
-            <div className="text-slate-500 pt-2">Posted On 2nd Dec 2023</div>
+            <div className="text-slate-500 pt-2">
+              Posted On{" "}
+              {new Date(blog.createdAt)
+                .toLocaleString("en-GB", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                  hour12: true,
+                })
+                .replace(",", " at")}
+            </div>
             <div className="pt-4">{blog.content}</div>
             <img className="mt-8 w-11/12" src={blog.thumbnail} />
           </div>

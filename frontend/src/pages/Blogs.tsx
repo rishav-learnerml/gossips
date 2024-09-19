@@ -16,7 +16,16 @@ const Blogs = () => {
             title={blog.title}
             content={blog.content}
             authorName={blog.author.name || "Anonymous"}
-            publishedDate="2nd Feb 2024"
+            publishedDate={new Date(blog.createdAt)
+              .toLocaleString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+              })
+              .replace(",", " at")}
             thumbnail={blog.thumbnail}
             id={blog.id}
             key={blog.id}
