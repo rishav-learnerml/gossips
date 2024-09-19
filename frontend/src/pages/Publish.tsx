@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { BACKEND_URL, CREATE_BLOG } from "@/common/config";
 import Appbar from "@/components/Appbar";
 import ImageUpload from "@/components/ImageUploader"; // Update this component to call handleImage
@@ -15,7 +16,7 @@ import { Link } from "react-router-dom";
 const Publish = () => {
   const [thumbnail, setThumbnail] = useState<string>("");
 
-  const handleImage = async (file: File) => {
+  const handleImage = async (file: any) => {
     console.log(file)
     const formData = new FormData();
     formData.append("file", file.target.files[0]);
