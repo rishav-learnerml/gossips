@@ -7,6 +7,7 @@ interface BlogCardProps {
   content: string;
   publishedDate: string;
   id: string;
+  thumbnail: string;
 }
 
 const BlogCard = ({
@@ -14,25 +15,36 @@ const BlogCard = ({
   title,
   content,
   publishedDate,
-  id
+  thumbnail,
+  id,
 }: BlogCardProps) => {
   return (
-    <Link to={`/blog/${id}`} className="border-b-2 border-gray-200 p-4 w-screen max-w-screen-md cursor-pointer">
-      <div className="flex">
-        <div className="flex justify-center flex-col">
-          <AvatarPic name={authorName} />
+    <Link
+      to={`/blog/${id}`}
+      className="border-b-2 border-gray-200 p-4 w-screen max-w-screen-md cursor-pointer"
+    >
+      <div className="flex justify-between">
+        <div>
+          <div className="flex">
+            <div className="flex justify-center flex-col">
+              <AvatarPic name={authorName} />
+            </div>
+            <div className="flex item-center my-auto">
+              <div className="font-extralight">{authorName}</div>
+              <div className="px-2">&#9679;</div>
+              <div className="font-thin text-slate-500">{publishedDate}</div>
+            </div>
+          </div>
+          <div className="text-xl font-semibold pt-2">{title}</div>
+          <div className="font-thin">
+            {content.length > 100 ? content?.slice(0, 100) + "..." : content}
+          </div>
+          <div className="text-slate-500 text-sm pt-2">{`${Math.ceil(
+            content.length / 100
+          )} minute(s) red`}</div>
         </div>
-        <div className="flex item-center my-auto">
-          <div className="font-extralight">{authorName}</div>
-          <div className="px-2">&#9679;</div>
-          <div className="font-thin text-slate-500">{publishedDate}</div>
-        </div>
+        <img src={thumbnail} alt="thumbnail" className="w-30 h-20 rounded-lg"/>
       </div>
-      <div className="text-xl font-semibold pt-2">{title}</div>
-      <div className="font-thin">
-        {content.length > 100 ? content?.slice(0, 100) + "..." : content}
-      </div>
-      <div className="text-slate-500 text-sm pt-2">{`${Math.ceil(content.length / 100)} minute(s) red`}</div>
     </Link>
   );
 };

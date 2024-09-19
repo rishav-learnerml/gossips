@@ -17,6 +17,7 @@ const Blogs = () => {
             content={blog.content}
             authorName={blog.author.name || "Anonymous"}
             publishedDate="2nd Feb 2024"
+            thumbnail={blog.thumbnail}
             id={blog.id}
             key={blog.id}
           />

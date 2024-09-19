@@ -12,6 +12,7 @@ const BlogContent = ({ blog }: { blog: BlogType }) => {
             <div className="text-5xl font-extrabold">{blog.title}</div>
             <div className="text-slate-500 pt-2">Posted On 2nd Dec 2023</div>
             <div className="pt-4">{blog.content}</div>
+            <img className="mt-8 w-11/12" src={blog.thumbnail} />
           </div>
           <div className="col-span-4 ">
             <div className="text-slate-600 text-lg pl-2">Author</div>

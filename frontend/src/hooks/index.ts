@@ -6,6 +6,7 @@ export interface BlogType {
   content: string;
   title: string;
   id: string;
+  thumbnail: string;
   author: {
     name: string;
   };
