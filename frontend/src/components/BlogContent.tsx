@@ -8,7 +8,7 @@ const BlogContent = ({ blog }: { blog: BlogType }) => {
       <Appbar />
       <div className="flex justify-center items-center">
         <div className="grid grid-cols-12 px-10 w-full pt-12 max-w-screen-xl">
-          <div className="col-span-8">
+          <div className="col-span-9">
             <div className="text-5xl font-extrabold">{blog.title}</div>
             <div className="text-slate-500 pt-2">
               Posted On{" "}
@@ -24,9 +24,9 @@ const BlogContent = ({ blog }: { blog: BlogType }) => {
                 .replace(",", " at")}
             </div>
             <div className="pt-4">{blog.content}</div>
-            <img className="mt-8 w-11/12 h-2/6 object-cover" src={blog.thumbnail} />
+            <img className="mt-8 w-full h-2/6 object-cover" src={blog.thumbnail} />
           </div>
-          <div className="col-span-4 ">
+          <div className="col-span-3 ml-auto">
             <div className="text-slate-600 text-lg pl-2">Author</div>
             <div className="flex w-full">
               <div className="pr-4 flex flex-col justify-center">
