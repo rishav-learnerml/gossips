@@ -8,7 +8,6 @@ interface BlogCardProps {
   publishedDate: string;
   id: string;
   thumbnail: string;
-  
 }
 
 const BlogCard = ({
@@ -18,7 +17,6 @@ const BlogCard = ({
   publishedDate,
   thumbnail,
   id,
-
 }: BlogCardProps) => {
   return (
     <Link
@@ -27,17 +25,17 @@ const BlogCard = ({
     >
       <div className="flex justify-between">
         <div>
-          <div className="flex">
-            <div className="flex justify-center flex-col">
+          <div className="flex flex-col sm:flex-row">
+            <div className="flex sm:justify-center items-center">
               <AvatarPic name={authorName} />
+              <div className="font-extralight my-auto">{authorName}</div>
             </div>
-            <div className="flex item-center my-auto">
-              <div className="font-extralight">{authorName}</div>
-              <div className="px-2">&#9679;</div>
+            <div className="flex flex-col sm:flex-row item-center my-auto">
+              <div className="px-2 sm:flex hidden">&#9679;</div>
               <div className="font-thin text-slate-500">{publishedDate}</div>
             </div>
           </div>
-          <div className="text-xl font-semibold pt-2">{title}</div>
+          <div className="sm:text-xl font-semibold pt-2">{title}</div>
           <div className="font-thin">
             {content.length > 100 ? content?.slice(0, 100) + "..." : content}
           </div>
@@ -45,7 +43,11 @@ const BlogCard = ({
             content.length / 100
           )} minute(s) red`}</div>
         </div>
-        <img src={thumbnail} alt="thumbnail" className="max-w-36 min-w-36 h-28 rounded-lg object-cover my-auto" />
+        <img
+          src={thumbnail}
+          alt="thumbnail"
+          className="sm:max-w-36 sm:min-w-36 sm:h-28 max-w-24 min-w-24 h-20 rounded-lg object-cover my-auto"
+        />
       </div>
     </Link>
   );

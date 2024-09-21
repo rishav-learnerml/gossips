@@ -17,7 +17,7 @@ const Appbar = () => {
         <Link to={"/publish"}>
           <Button
             variant="secondary"
-            className="bg-black text-white hover:text-black mr-10"
+            className="bg-black text-white hover:text-black sm:mr-10"
           >
             New Gossip
           </Button>

@@ -108,6 +108,9 @@ blogRouter.get("/bulk", async (c) => {
           },
         },
       },
+      orderBy: {
+        createdAt: "asc", // Sorts by creation date in descending order
+      },
     });
 
     return c.json(
@@ -117,7 +120,7 @@ blogRouter.get("/bulk", async (c) => {
       200
     );
   } catch (error) {
-    console.error("Error fetching blog post!",error)
+    console.error("Error fetching blog post!", error);
 
     return c.json(
       {
@@ -162,7 +165,7 @@ blogRouter.get("/:id", async (c) => {
       200
     );
   } catch (error) {
-    console.error("Error fetching blog post!",error)
+    console.error("Error fetching blog post!", error);
     return c.json(
       {
         error: "Error fetching blog post!",
