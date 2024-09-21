@@ -41,7 +41,7 @@ const BlogCard = ({
           </div>
           <div className="text-slate-500 text-sm pt-2">{`${Math.ceil(
             content.length / 100
-          )} minute(s) red`}</div>
+          )} minute(s) read`}</div>
         </div>
         <img
           src={thumbnail}
