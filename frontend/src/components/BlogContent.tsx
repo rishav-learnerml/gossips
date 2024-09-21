@@ -24,7 +24,7 @@ const BlogContent = ({ blog }: { blog: BlogType }) => {
                 .replace(",", " at")}
             </div>
             <div className="pt-4">{blog.content}</div>
-            <img className="mt-8 w-11/12" src={blog.thumbnail} />
+            <img className="mt-8 w-11/12 h-2/6 object-cover" src={blog.thumbnail} />
           </div>
           <div className="col-span-4 ">
             <div className="text-slate-600 text-lg pl-2">Author</div>

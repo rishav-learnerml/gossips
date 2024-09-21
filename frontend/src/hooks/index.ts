@@ -46,7 +46,7 @@ export const useBlogs = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      setBlogs(res.data.blogs);
+      setBlogs(res.data.blogs.reverse());
       setLoading(false);
     })(); //IIFE
   }, []);
