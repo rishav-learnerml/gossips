@@ -45,7 +45,7 @@ const BlogCard = ({
             content.length / 100
           )} minute(s) red`}</div>
         </div>
-        <img src={thumbnail} alt="thumbnail" className="w-32 max-w-28 h-20 rounded-lg object-cover" />
+        <img src={thumbnail} alt="thumbnail" className="max-w-36 min-w-36 h-28 rounded-lg object-cover my-auto" />
       </div>
     </Link>
   );
