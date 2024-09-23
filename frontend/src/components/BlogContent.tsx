@@ -23,13 +23,20 @@ const BlogContent = ({ blog }: { blog: BlogType }) => {
                 })
                 .replace(",", " at")}
             </div>
-            <div className="whitespace-pre break-all max-w-[90vw] pt-4">{blog.content}</div>
-            <img className="mt-8 w-full h-2/6 object-cover" src={blog.thumbnail} />
+            <div className="whitespace-pre break-words text-wrap max-w-[60vw] pt-4">
+              {blog.content}
+            </div>
+            <div className="mb-8">
+              <img
+                className="mt-8 w-full h-2/6 object-cover"
+                src={blog.thumbnail}
+              />
+            </div>
           </div>
           <div className="col-span-3 ml-auto">
             <div className="text-slate-600 sm:text-lg pl-2">Author</div>
             <div className="flex w-full">
-              <div className="pr-4 flex flex-col justify-center">
+              <div className="pr-4 flex flex-col justify-center mb-5">
                 <AvatarPic name={blog.author.name || "Anonymous"} />
               </div>
               <div>
