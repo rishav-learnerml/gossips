@@ -23,7 +23,7 @@ const BlogContent = ({ blog }: { blog: BlogType }) => {
                 })
                 .replace(",", " at")}
             </div>
-            <div className="whitespace-pre break-words text-wrap max-w-[60vw] pt-4">
+            <div className="whitespace-pre break-words text-wrap max-w-full pt-4">
               {blog.content}
             </div>
             <div className="mb-8">
