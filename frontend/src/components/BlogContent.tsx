@@ -28,7 +28,7 @@ const BlogContent = ({ blog }: { blog: BlogType }) => {
             </div>
             <div className="mb-8">
               <img
-                className="mt-8 w-full h-2/6 object-cover"
+                className="mt-8 w-full max-h-[60vh] object-cover"
                 src={blog.thumbnail}
               />
             </div>
